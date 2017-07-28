@@ -7,20 +7,19 @@ import android.view.View;
 
 import com.stefancouture.accountsmgr.R;
 
-public class loginPageActivity extends AppCompatActivity {
-
+public class registerPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_register_page);
     }
 
     /**********
      *
-     * When user presses register button on login page, will send user to register page
+     * When user presses cancel button on register page, will send user back to login page
      */
-    public void register(View view){
-        Intent intent = new Intent(this, registerPageActivity.class);
+    public void cancel(View view){
+        Intent intent = new Intent(this, loginPageActivity.class);
         startActivity(intent);
     }
 }
