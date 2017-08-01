@@ -8,6 +8,7 @@ import android.view.View;
 import com.stefancouture.accountsmgr.R;
 
 public class registerPageActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
