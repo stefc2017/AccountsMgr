@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="45dp"
         android:labelFor="@+id/username"/>
 
@@ -21,7 +21,7 @@
         android:layout_alignBaseline="@+id/username_text"
         android:layout_alignBottom="@+id/username_text"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="text"
         android:textStyle="bold"/>
 
@@ -30,8 +30,8 @@
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:layout_below="@+id/username_text"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="50dp"
         android:labelFor="@+id/password"/>
 
@@ -41,7 +41,7 @@
         android:layout_alignBaseline="@+id/password_text"
         android:layout_alignBottom="@+id/password_text"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="textPassword"
         android:textStyle="bold"/>
 
@@ -50,8 +50,8 @@
         android:layout_height="wrap_content"
         android:text="@string/reenter_password"
         android:layout_below="@+id/password_text"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="50dp"
         android:labelFor="@+id/reenter_password"/>
 
@@ -61,7 +61,7 @@
         android:layout_alignBaseline="@+id/reenter_password_text"
         android:layout_alignBottom="@+id/reenter_password_text"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="textPassword"
         android:textStyle="bold"/>
 
@@ -70,8 +70,8 @@
         android:layout_height="wrap_content"
         android:text="@string/firstName"
         android:layout_below="@+id/reenter_password_text"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="50dp"
         android:labelFor="@+id/firstName"/>
 
@@ -81,7 +81,7 @@
         android:layout_alignBaseline="@+id/firstName_text"
         android:layout_alignBottom="@+id/firstName_text"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="textPersonName"
         android:textStyle="bold"/>
 
@@ -90,8 +90,8 @@
         android:layout_height="wrap_content"
         android:text="@string/lastName"
         android:layout_below="@+id/firstName_text"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="50dp"
         android:labelFor="@+id/lastName"/>
 
@@ -102,7 +102,7 @@
         android:layout_alignBaseline="@+id/lastName_text"
         android:layout_alignBottom="@+id/lastName_text"
         android:layout_alignStart="@+id/firstName"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="textPersonName"
         android:textStyle="bold" />
 
@@ -111,8 +111,8 @@
         android:layout_height="wrap_content"
         android:text="@string/email"
         android:layout_below="@+id/lastName_text"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:paddingTop="50dp"
         android:labelFor="@+id/email"/>
 
@@ -123,7 +123,7 @@
         android:layout_alignBaseline="@+id/email_text"
         android:layout_alignBottom="@+id/email_text"
         android:layout_alignStart="@+id/lastName"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="15dp"
         android:inputType="textEmailAddress"
         android:textStyle="bold" />
 
