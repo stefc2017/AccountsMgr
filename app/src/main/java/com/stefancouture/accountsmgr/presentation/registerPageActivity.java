@@ -8,18 +8,26 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.stefancouture.accountsmgr.R;
+import com.stefancouture.accountsmgr.business.exceptions.PasswordAndReEnterPasswordMatchException;
+import com.stefancouture.accountsmgr.business.exceptions.PasswordRequiredException;
+import com.stefancouture.accountsmgr.business.exceptions.ReEnterPasswordRequiredException;
+import com.stefancouture.accountsmgr.business.exceptions.UsernameAlreadyExistsException;
+import com.stefancouture.accountsmgr.business.exceptions.UsernameRequiredException;
 import com.stefancouture.accountsmgr.objects.User;
 import com.stefancouture.accountsmgr.business.UserLogic;
+import com.stefancouture.accountsmgr.persistence.Users;
 
 public class registerPageActivity extends AppCompatActivity {
 
-    private UserLogic logic;
+    private UserLogic user_logic;
+    private Users user_db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        logic = new UserLogic();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
+        user_db = new Users(this);
+        user_logic = new UserLogic(user_db);
     }
 
     /**********
@@ -46,8 +54,21 @@ public class registerPageActivity extends AppCompatActivity {
         String email = ((EditText) findViewById(R.id.email)).getText().toString();
 
         //create user object to send to business logic layer
-        User user = new User(username, password, reentered_password, firstName, lastName, email);
-        logic.register(user);
+        try {
+            User user = new User(username, password, reentered_password, firstName, lastName, email);
+            user_logic.register(user);
+        }catch(Exception e){
+            if(e instanceof UsernameRequiredException)
+                Log.d("hey", "Username field is required");
+            else if(e instanceof PasswordRequiredException)
+                Log.d("hey", "Password field is required");
+            else if(e instanceof ReEnterPasswordRequiredException)
+                Log.d("hey", "Re-enter password field is required");
+            else if(e instanceof UsernameAlreadyExistsException)
+                Log.d("hey", "Username already exists");
+            else if(e instanceof PasswordAndReEnterPasswordMatchException)
+                Log.d("hey", "Password and Re-entered password do not match");
+        }
 
         //send back to login page
         Intent intent = new Intent(this, loginPageActivity.class);
