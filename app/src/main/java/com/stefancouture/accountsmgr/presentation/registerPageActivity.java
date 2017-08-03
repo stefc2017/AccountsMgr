@@ -1,11 +1,13 @@
 package com.stefancouture.accountsmgr.presentation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.stefancouture.accountsmgr.R;
 import com.stefancouture.accountsmgr.business.exceptions.PasswordAndReEnterPasswordMatchException;
@@ -52,26 +54,49 @@ public class registerPageActivity extends AppCompatActivity {
         String firstName = ((EditText) findViewById(R.id.firstName)).getText().toString();
         String lastName = ((EditText) findViewById(R.id.lastName)).getText().toString();
         String email = ((EditText) findViewById(R.id.email)).getText().toString();
+        boolean successful = true;
 
         //create user object to send to business logic layer
         try {
             User user = new User(username, password, reentered_password, firstName, lastName, email);
             user_logic.register(user);
         }catch(Exception e){
-            if(e instanceof UsernameRequiredException)
-                Log.d("hey", "Username field is required");
-            else if(e instanceof PasswordRequiredException)
-                Log.d("hey", "Password field is required");
-            else if(e instanceof ReEnterPasswordRequiredException)
-                Log.d("hey", "Re-enter password field is required");
-            else if(e instanceof UsernameAlreadyExistsException)
-                Log.d("hey", "Username already exists");
-            else if(e instanceof PasswordAndReEnterPasswordMatchException)
-                Log.d("hey", "Password and Re-entered password do not match");
+            if(e instanceof UsernameRequiredException) {
+                showNotification(getString(R.string.usernameRequired));
+                successful = false;
+            }
+            else if(e instanceof PasswordRequiredException) {
+                showNotification(getString(R.string.passwordRequired));
+                successful = false;
+            }
+            else if(e instanceof ReEnterPasswordRequiredException) {
+                showNotification(getString(R.string.reenterPasswordRequired));
+                successful = false;
+            }
+            else if(e instanceof UsernameAlreadyExistsException) {
+                showNotification(getString(R.string.usernameExists));
+                successful = false;
+            }
+            else if(e instanceof PasswordAndReEnterPasswordMatchException) {
+                showNotification(getString(R.string.passwordsDontMatch));
+                successful = false;
+            }
         }
 
-        //send back to login page
-        Intent intent = new Intent(this, loginPageActivity.class);
-        startActivity(intent);
+        if(successful) {
+            showNotification(getString(R.string.registerSuccessful));
+            //send back to login page
+            Intent intent = new Intent(this, loginPageActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void showNotification(String errorMessage){
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+        String text = errorMessage;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }

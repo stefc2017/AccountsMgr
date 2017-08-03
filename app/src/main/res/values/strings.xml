@@ -10,4 +10,10 @@
     <string name="email">Email:</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
+    <string name="usernameRequired">Username field is required</string>
+    <string name="passwordRequired">Password field is required</string>
+    <string name="reenterPasswordRequired">Re-enter password field is required</string>
+    <string name="usernameExists">Username already exists</string>
+    <string name="passwordsDontMatch">Password and Re-entered password do not match</string>
+    <string name="registerSuccessful">Registered successfully</string>
 </resources>
