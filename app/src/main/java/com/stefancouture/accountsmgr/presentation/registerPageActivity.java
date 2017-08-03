@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,12 +15,12 @@ import com.stefancouture.accountsmgr.business.exceptions.ReEnterPasswordRequired
 import com.stefancouture.accountsmgr.business.exceptions.UsernameAlreadyExistsException;
 import com.stefancouture.accountsmgr.business.exceptions.UsernameRequiredException;
 import com.stefancouture.accountsmgr.objects.User;
-import com.stefancouture.accountsmgr.business.UserLogic;
+import com.stefancouture.accountsmgr.business.RegisterLogic;
 import com.stefancouture.accountsmgr.persistence.Users;
 
 public class registerPageActivity extends AppCompatActivity {
 
-    private UserLogic user_logic;
+    private RegisterLogic register_logic;
     private Users user_db;
 
     @Override
@@ -29,7 +28,7 @@ public class registerPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
         user_db = new Users(this);
-        user_logic = new UserLogic(user_db);
+        register_logic = new RegisterLogic(user_db);
     }
 
     /**********
@@ -48,18 +47,18 @@ public class registerPageActivity extends AppCompatActivity {
      * sends user back to login page.
      */
     public void register(View view){
-        String username = ((EditText) findViewById(R.id.username)).getText().toString();
-        String password = ((EditText) findViewById(R.id.password)).getText().toString();
-        String reentered_password = ((EditText) findViewById(R.id.reenter_password)).getText().toString();
-        String firstName = ((EditText) findViewById(R.id.firstName)).getText().toString();
-        String lastName = ((EditText) findViewById(R.id.lastName)).getText().toString();
-        String email = ((EditText) findViewById(R.id.email)).getText().toString();
+        String username = ((EditText) findViewById(R.id.register_username)).getText().toString();
+        String password = ((EditText) findViewById(R.id.register_password)).getText().toString();
+        String reentered_password = ((EditText) findViewById(R.id.register_reenter_password)).getText().toString();
+        String firstName = ((EditText) findViewById(R.id.register_firstName)).getText().toString();
+        String lastName = ((EditText) findViewById(R.id.register_lastName)).getText().toString();
+        String email = ((EditText) findViewById(R.id.register_email)).getText().toString();
         boolean successful = true;
 
         //create user object to send to business logic layer
         try {
             User user = new User(username, password, reentered_password, firstName, lastName, email);
-            user_logic.register(user);
+            register_logic.register(user);
         }catch(Exception e){
             if(e instanceof UsernameRequiredException) {
                 showNotification(getString(R.string.usernameRequired));

@@ -16,4 +16,6 @@
     <string name="usernameExists">Username already exists</string>
     <string name="passwordsDontMatch">Password and Re-entered password do not match</string>
     <string name="registerSuccessful">Registered successfully</string>
+    <string name="userDoesNotExist">Username does not exist</string>
+    <string name="incorrectPassword">Incorrect Password</string>
 </resources>

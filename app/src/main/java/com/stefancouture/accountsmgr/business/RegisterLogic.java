@@ -11,11 +11,11 @@ import com.stefancouture.accountsmgr.business.exceptions.UsernameRequiredExcepti
 import com.stefancouture.accountsmgr.objects.User;
 import com.stefancouture.accountsmgr.persistence.Users;
 
-public class UserLogic{
+public class RegisterLogic {
 
     private Users user_db;
 
-    public UserLogic(Users user_db){
+    public RegisterLogic(Users user_db){
         this.user_db = user_db;
     }
 
@@ -25,13 +25,13 @@ public class UserLogic{
         //check if username is already in database
         duplicateUsername = containsUsername(user.getUsername());
 
-        if(user.getUsername().length() == 0)
+        if(user.getUsername().trim().length() == 0)
             throw new UsernameRequiredException();
         else if(duplicateUsername) //if there is already a user with the entered username
             throw new UsernameAlreadyExistsException();
-        else if(user.getPassword().length() == 0)
+        else if(user.getPassword().trim().length() == 0)
             throw new PasswordRequiredException();
-        else if(user.getReentered_password().length() == 0)
+        else if(user.getReentered_password().trim().length() == 0)
             throw new ReEnterPasswordRequiredException();
         else if(user.getPassword().equals(user.getReentered_password())) { //check if password and re-entered password match
             //add to db

@@ -24,6 +24,10 @@
             android:label="Register">
         </activity>
 
+        <activity
+            android:name=".presentation.welcomePageActivity"
+            android:label="Welcome ">
+        </activity>
     </application>
 
 </manifest>
