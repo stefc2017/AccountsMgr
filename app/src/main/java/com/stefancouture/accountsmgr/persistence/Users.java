@@ -4,9 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import com.stefancouture.accountsmgr.business.UserLogic;
 import com.stefancouture.accountsmgr.objects.User;
 
 public class Users extends SQLiteOpenHelper {
