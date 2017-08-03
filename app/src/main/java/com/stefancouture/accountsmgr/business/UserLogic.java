@@ -18,31 +18,27 @@ public class UserLogic{
     public UserLogic(Users user_db){
         this.user_db = user_db;
     }
+
     public void register(User user) throws Exception{
         boolean duplicateUsername;
 
+        //check if username is already in database
+        duplicateUsername = containsUsername(user.getUsername());
+
         if(user.getUsername().length() == 0)
             throw new UsernameRequiredException();
+        else if(duplicateUsername) //if there is already a user with the entered username
+            throw new UsernameAlreadyExistsException();
         else if(user.getPassword().length() == 0)
             throw new PasswordRequiredException();
         else if(user.getReentered_password().length() == 0)
             throw new ReEnterPasswordRequiredException();
-        else { //username, password and re-enter password are not empty
-            //check if username is already in database
-            duplicateUsername = containsUsername(user.getUsername());
-
-            if (duplicateUsername) { //if there is already a user with the entered username
-                throw new UsernameAlreadyExistsException();
-            }
-            else {
-                //check if password and re-entered password match
-                if (user.getPassword().equals(user.getReentered_password())) {
-                    //add to db
-                    user_db.insertIntoTable(user);
-                } else {
-                    throw new PasswordAndReEnterPasswordMatchException();
-                }
-            }
+        else if(user.getPassword().equals(user.getReentered_password())) { //check if password and re-entered password match
+            //add to db
+            user_db.insertIntoTable(user);
+        }
+        else if(!user.getPassword().equals(user.getReentered_password())){
+            throw new PasswordAndReEnterPasswordMatchException();
         }
     }//end register
 
