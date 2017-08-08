@@ -18,4 +18,5 @@
     <string name="registerSuccessful">Registered successfully</string>
     <string name="userDoesNotExist">Username does not exist</string>
     <string name="incorrectPassword">Incorrect Password</string>
+    <string name="logout">Logout</string>
 </resources>
